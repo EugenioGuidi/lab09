@@ -10,13 +10,13 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Random;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  * This class is a simple application that writes a random number on a file.
@@ -26,7 +26,6 @@ import java.util.Random;
  * applications.
  */
 public class BadIOGUI {
-
     private static final String TITLE = "A very simple GUI application";
     private static final String PATH = System.getProperty("user.home")
             + File.separator
@@ -75,11 +74,13 @@ public class BadIOGUI {
         read.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
-                try (BufferedReader br = new BufferedReader(new FileReader(PATH))) {
-                    System.out.println(Integer.parseInt(br.readLine()));
+                try {
+                    for (final String line : Files.readAllLines(Paths.get(PATH))) {
+                        System.out.println(line); // NOPMD
+                    }
                 } catch (IOException e1) {
                     JOptionPane.showMessageDialog(frame, e1, "Error", JOptionPane.ERROR_MESSAGE);
-                    e1.printStackTrace();
+                    e1.printStackTrace(); // NOPMD: allowed as this is just an exercise
                 }
             }
         });
