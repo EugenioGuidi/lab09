@@ -49,6 +49,22 @@ public final class SimpleGUIWithFileChooser {
         final JButton browse = new JButton("Browse...");
         canvasNord.add(browse, BorderLayout.EAST);
 
+        browse.addActionListener (new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser fileChooser = new JFileChooser();
+                if (fileChooser.showSaveDialog(frame) == JFileChooser.APPROVE_OPTION) {
+                    controller.setFile(fileChooser.getSelectedFile());
+                    textBrowserField.setText(fileChooser.getSelectedFile().getAbsolutePath());
+                } else if (fileChooser.showSaveDialog(frame) == JFileChooser.CANCEL_OPTION) {
+                    // do nothing
+                } else {
+                    JOptionPane.showMessageDialog(frame, "An error has occurred!");
+                }
+            }
+        });
+
         save.addActionListener(new ActionListener() {
 
             @Override
