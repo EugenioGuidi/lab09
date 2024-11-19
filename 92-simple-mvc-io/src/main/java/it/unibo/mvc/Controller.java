@@ -10,7 +10,13 @@ import java.io.IOException;
  */
 public class Controller {
 
+    private static final String DEFAULT_NAME_FILE = "output.txt";
+
     private File file;
+
+    public Controller() {
+        this.file = new File(System.getProperty("user.home") + System.getProperty("file.separator") + DEFAULT_NAME_FILE);
+    }
 
     public void setFile(final File file) {
         this.file = file;
@@ -24,7 +30,7 @@ public class Controller {
         return this.file.getAbsolutePath();
     }
 
-    public void setStringInFile (final String string) throws IOException {
+    public void writeStringInFile (final String string) throws IOException {
         try(BufferedWriter wr = new BufferedWriter(new FileWriter(this.file))) {
             wr.write(string);
         } catch (IOException e) {
