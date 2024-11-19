@@ -54,10 +54,11 @@ public final class SimpleGUIWithFileChooser {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFileChooser fileChooser = new JFileChooser();
-                if (fileChooser.showSaveDialog(frame) == JFileChooser.APPROVE_OPTION) {
+                int value = fileChooser.showSaveDialog(frame);
+                if (value == JFileChooser.APPROVE_OPTION) {
                     controller.setFile(fileChooser.getSelectedFile());
                     textBrowserField.setText(fileChooser.getSelectedFile().getAbsolutePath());
-                } else if (fileChooser.showSaveDialog(frame) == JFileChooser.CANCEL_OPTION) {
+                } else if (value == JFileChooser.CANCEL_OPTION) {
                     // do nothing
                 } else {
                     JOptionPane.showMessageDialog(frame, "An error has occurred!");
