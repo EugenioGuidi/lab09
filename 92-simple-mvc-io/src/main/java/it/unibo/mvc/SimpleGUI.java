@@ -22,10 +22,9 @@ public final class SimpleGUI {
     private static final String TITLE = "MINE SIMPLE GUI APPLICATION";
     private static final int PROPORTION = 3;
     private final JFrame frame = new JFrame(TITLE);
-    private final Controller controller;
+    private final int FONT_SIZE = 15;
 
     public SimpleGUI(Controller controller) {
-        this.controller = controller;
         final JPanel canvas = new JPanel();
         canvas.setLayout(new BorderLayout());
         final JButton save = new JButton("Save");
@@ -34,6 +33,10 @@ public final class SimpleGUI {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         final JTextArea textArea = new JTextArea();
         canvas.add(new JScrollPane(textArea), BorderLayout.CENTER);
+
+        textArea.setLineWrap(true);
+        textArea.setWrapStyleWord(true);
+        textArea.setFont(new Font("Arial", Font.PLAIN, FONT_SIZE));
 
         save.addActionListener(new ActionListener() {
 
@@ -59,8 +62,7 @@ public final class SimpleGUI {
     }
 
     public static void main(final String... args) {
-        Controller controller = new Controller();
-        new SimpleGUI(controller).display();
+        new SimpleGUI(new Controller()).display();
      }
 
 }
