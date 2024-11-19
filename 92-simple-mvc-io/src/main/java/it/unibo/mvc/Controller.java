@@ -13,4 +13,8 @@ public class Controller {
         this.file = file;
     }
 
+    public File getFile() {
+        return this.file;
+    }
+
 }
