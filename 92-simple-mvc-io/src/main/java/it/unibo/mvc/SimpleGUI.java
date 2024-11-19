@@ -9,9 +9,13 @@ import java.awt.Toolkit;
  * 
  */
 public final class SimpleGUI {
-    private static final String TITLE = "A very simple GUI application";
+    private static final String TITLE = "MINE SIMPLE GUI APPLICATION";
     private static final int PROPORTION = 3;
-    private final JFrame frame = new JFrame();
+    private final JFrame frame = new JFrame(TITLE);
+
+    public SimpleGUI() {
+        
+    }
 
     private void display() {
         final Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
