@@ -17,4 +17,8 @@ public class Controller {
         return this.file;
     }
 
+    public String getFilePath() {
+        return this.file.getAbsolutePath();
+    }
+
 }
