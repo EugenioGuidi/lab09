@@ -35,11 +35,14 @@ public final class SimpleGUIWithFileChooser {
         frame.setContentPane(canvas);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         final JTextArea textArea = new JTextArea();
-        canvas.add(new JScrollPane(textArea), BorderLayout.CENTER);
-
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
         textArea.setFont(new Font("Arial", Font.PLAIN, FONT_SIZE));
+        canvas.add(new JScrollPane(textArea), BorderLayout.CENTER);
+
+        final JPanel canvasNord = new JPanel();
+        canvasNord.setLayout(new BorderLayout());
+        canvas.add(canvasNord, BorderLayout.NORTH);
 
         save.addActionListener(new ActionListener() {
 
