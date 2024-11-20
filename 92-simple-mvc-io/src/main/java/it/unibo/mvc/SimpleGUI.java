@@ -67,20 +67,19 @@ public final class SimpleGUI {
     }
 
     /**
-     * joivhwdhvwpdbv.
-     * @return frame
+     * @return frame of the GUI.
      */
     JFrame getFrame() {
         return this.frame;
     }
 
     /**
-     * wjdwodbvwdv.
-     * @return canvas
+     * @return canvas that is a pannel in frame.
      */
     JPanel getCanvas() {
         return this.canvas;
     }
+
     /**
      * The main start all the application initializing a new SimpleGUI object helped by a new Controller.
      * 
