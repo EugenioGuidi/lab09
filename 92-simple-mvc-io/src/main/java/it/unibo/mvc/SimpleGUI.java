@@ -22,9 +22,15 @@ public final class SimpleGUI {
     private static final String TITLE = "MINE SIMPLE GUI APPLICATION";
     private static final int PROPORTION = 3;
     private final JFrame frame = new JFrame(TITLE);
-    private final int FONT_SIZE = 15;
+    private static final int FONT_SIZE = 15;
 
-    public SimpleGUI(Controller controller) {
+    /**
+     * The constructor initialize the frame with a text area to enter a text to be saved inside the file when
+     * the button save is clicked, helped by the controller.
+     * 
+     * @param controller Is the controller that work to write to the file
+     */
+    public SimpleGUI(final Controller controller) {
         final JPanel canvas = new JPanel();
         canvas.setLayout(new BorderLayout());
         final JButton save = new JButton("Save");
@@ -41,14 +47,13 @@ public final class SimpleGUI {
         save.addActionListener(new ActionListener() {
 
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 try {
                     controller.writeStringInFile(textArea.getText());
                 } catch (IOException e1) {
-                    e1.printStackTrace();
+                    e1.printStackTrace(); // NOPMD: allowed as this is just an exercise
                 }
             }
-            
         });
     }
 
@@ -61,8 +66,13 @@ public final class SimpleGUI {
         frame.setVisible(true);
     }
 
+    /**
+     * The main start all the application initializing a new SimpleGUI object helped by a new Controller.
+     * 
+     * @param args that can be null
+     */
     public static void main(final String... args) {
         new SimpleGUI(new Controller()).display();
-     }
+    }
 
 }
