@@ -22,6 +22,7 @@ public final class SimpleGUI {
     private static final String TITLE = "MINE SIMPLE GUI APPLICATION";
     private static final int PROPORTION = 3;
     private final JFrame frame = new JFrame(TITLE);
+    private final JPanel canvas = new JPanel();
     private static final int FONT_SIZE = 15;
 
     /**
@@ -31,14 +32,13 @@ public final class SimpleGUI {
      * @param controller Is the controller that work to write to the file
      */
     public SimpleGUI(final Controller controller) {
-        final JPanel canvas = new JPanel();
-        canvas.setLayout(new BorderLayout());
+        this.canvas.setLayout(new BorderLayout());
         final JButton save = new JButton("Save");
-        canvas.add(save, BorderLayout.SOUTH);
-        frame.setContentPane(canvas);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.canvas.add(save, BorderLayout.SOUTH);
+        this.frame.setContentPane(this.canvas);
+        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         final JTextArea textArea = new JTextArea();
-        canvas.add(new JScrollPane(textArea), BorderLayout.CENTER);
+        this.canvas.add(new JScrollPane(textArea), BorderLayout.CENTER);
 
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
@@ -66,6 +66,21 @@ public final class SimpleGUI {
         frame.setVisible(true);
     }
 
+    /**
+     * joivhwdhvwpdbv.
+     * @return frame
+     */
+    JFrame getFrame() {
+        return this.frame;
+    }
+
+    /**
+     * wjdwodbvwdv.
+     * @return canvas
+     */
+    JPanel getCanvas() {
+        return this.canvas;
+    }
     /**
      * The main start all the application initializing a new SimpleGUI object helped by a new Controller.
      * 
