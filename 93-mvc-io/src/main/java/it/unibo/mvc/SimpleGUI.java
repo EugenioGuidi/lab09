@@ -10,4 +10,15 @@ public final class SimpleGUI {
 
     private final JFrame frame = new JFrame();
 
+    public SimpleGUI(SimpleController controller) {
+
+    }
+
+    private void display() {
+        
+    }
+
+    public static void main(final String... strg) {
+        new SimpleGUI(new SimpleController()).display();
+    }
 }
