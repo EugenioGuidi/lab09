@@ -3,7 +3,7 @@ package it.unibo.mvc;
 import java.util.List;
 
 /**
- * This interface has methods thatt model a controller
+ * This interface has methods that model a controller
  * for save and print string in standard output.
  */
 public interface Controller {
