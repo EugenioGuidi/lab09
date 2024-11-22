@@ -4,6 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -46,6 +49,16 @@ public final class SimpleGUI {
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
         textArea.setFont(new Font("Arial", Font.PLAIN, FONT_SIZE));
+        textField.setFont(new Font("Arial", Font.PLAIN, FONT_SIZE));
+
+        print.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+                controller.setString(textField.getText());
+                System.out.println(controller.getNextString());
+            }
+        });
     }
 
     private void display() {
@@ -55,8 +68,6 @@ public final class SimpleGUI {
         frame.setSize(sw / PROPORTION, sh / PROPORTION);
         frame.setLocationByPlatform(true);
         frame.setVisible(true);
-
-
     }
 
     /**

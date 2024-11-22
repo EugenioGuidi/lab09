@@ -13,14 +13,14 @@ public interface Controller {
      * 
      * @throws IllegalArgumentException if string is null
      */
-    public void setString();
+    public void setString(final String string);
 
     /**
      * This method return the next string to print.
      * 
      * @return string
      */
-    public String getString();
+    public String getNextString();
 
     /**
      * This method return the list of string.
@@ -33,6 +33,6 @@ public interface Controller {
      * This method print current string
      * @throws IllegalStateException if the current string is unset
      */
-    public void printCurrentString();
+    public void printCurrentString(final String string);
 
 }
