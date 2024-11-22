@@ -50,6 +50,7 @@ public final class SimpleGUI {
         textArea.setWrapStyleWord(true);
         textArea.setFont(new Font("Arial", Font.PLAIN, FONT_SIZE));
         textField.setFont(new Font("Arial", Font.PLAIN, FONT_SIZE));
+        textArea.setEditable(false);
 
         print.addActionListener(new ActionListener() {
 
@@ -58,6 +59,20 @@ public final class SimpleGUI {
                 controller.setString(textField.getText());
                 System.out.println(controller.getNextString());
             }
+        });
+
+        showHistory.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String string = "";
+                for(String str : controller.getListOfPrintedString()) {
+                    str = "[" + str + "] ";
+                    string = string + str;
+                }
+                textArea.setText(string);
+            }
+            
         });
     }
 

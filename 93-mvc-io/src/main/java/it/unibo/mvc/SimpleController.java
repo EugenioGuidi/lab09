@@ -1,5 +1,6 @@
 package it.unibo.mvc;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
@@ -11,7 +12,7 @@ import java.util.Objects;
 public final class SimpleController implements Controller {
 
     private String nextString = null;
-    private final List<String> listOfPrintedString = null;
+    private List<String> listOfPrintedString = new LinkedList<>();
 
     /**
      * This methode set then next string to print.
@@ -31,6 +32,9 @@ public final class SimpleController implements Controller {
             System.out.print("Error: " + e.getMessage());
         }
         this.nextString = string;
+        if(!string.equals("")) {
+            listOfPrintedString.add(string);
+        }
     }
 
     /**
