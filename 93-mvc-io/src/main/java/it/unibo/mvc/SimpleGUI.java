@@ -6,10 +6,10 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -35,11 +35,11 @@ public final class SimpleGUI {
     public SimpleGUI(final SimpleController controller) {
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.canvas.setLayout(new BorderLayout());
-        JTextField textField = new JTextField();
-        JTextArea textArea = new JTextArea();
-        JPanel canvasSouth = new JPanel();
-        JButton print = new JButton("Print");
-        JButton showHistory = new JButton("Show history");
+        final JTextField textField = new JTextField();
+        final JTextArea textArea = new JTextArea();
+        final JPanel canvasSouth = new JPanel();
+        final JButton print = new JButton("Print");
+        final JButton showHistory = new JButton("Show history");
         canvasSouth.add(print);
         canvasSouth.add(showHistory);
         this.canvas.add(textField, BorderLayout.NORTH);
@@ -57,22 +57,20 @@ public final class SimpleGUI {
             @Override
             public void actionPerformed(final ActionEvent e) {
                 controller.setString(textField.getText());
-                System.out.println(controller.getNextString());
+                System.out.println(controller.getNextString()); // NOPMD: allowed as this is just an exercise
             }
         });
 
         showHistory.addActionListener(new ActionListener() {
 
             @Override
-            public void actionPerformed(ActionEvent e) {
-                String string = "";
-                for(String str : controller.getListOfPrintedString()) {
-                    str = "[" + str + "] ";
-                    string = string + str;
+            public void actionPerformed(final ActionEvent e) {
+                if (controller.getListOfPrintedString().isEmpty()) {
+                    JOptionPane.showMessageDialog(showHistory, "The history is empty");
                 }
+                final String string = String.join("\n", controller.getListOfPrintedString());
                 textArea.setText(string);
             }
-            
         });
     }
 

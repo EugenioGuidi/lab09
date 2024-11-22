@@ -2,7 +2,8 @@ package it.unibo.mvc;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Objects;
+
+import javax.swing.JOptionPane;
 
 /**
  * That class implementing the interface Controller modelling a controller
@@ -11,8 +12,8 @@ import java.util.Objects;
  */
 public final class SimpleController implements Controller {
 
-    private String nextString = null;
-    private List<String> listOfPrintedString = new LinkedList<>();
+    private String nextString;
+    private final List<String> listOfPrintedString = new LinkedList<>();
 
     /**
      * This methode set then next string to print.
@@ -21,18 +22,15 @@ public final class SimpleController implements Controller {
      */
     @Override
     public void setString(final String string) {
-        if(string == null) {
-            throw new NullPointerException("String can't be null");
+        if (string == null) {
+            throw new IllegalArgumentException("String can't be null");
         }
-        try {
-            if(string.equals("")) {
-                throw new IllegalStateException("String can't be unsetted");
-            }
-        } catch (IllegalStateException e) {
-            System.out.print("Error: " + e.getMessage());
+        if ("".equals(string)) {
+            JOptionPane.showMessageDialog(null, "Error string can't be unsetted");
+            throw new IllegalArgumentException("String can't be unsetted");
         }
         this.nextString = string;
-        if(!string.equals("")) {
+        if (!"".equals(string)) {
             listOfPrintedString.add(string);
         }
     }
@@ -54,20 +52,18 @@ public final class SimpleController implements Controller {
      */
     @Override
     public List<String> getListOfPrintedString() {
-        return this.listOfPrintedString;
+        return new LinkedList<>(this.listOfPrintedString);
     }
 
     /**
-     * This method print current string
+     * This method print current string.
      * @throws IllegalStateException if the current string is unset
      */
     @Override
     public void printCurrentString(final String string) {
-        try {
-            System.out.println(Objects.requireNonNull(string));
-        } catch (NullPointerException e) {
+        if (string == null) {
             throw new IllegalArgumentException("The current string is unsetted");
         }
+        JOptionPane.showMessageDialog(null, string);
     }
-
 }

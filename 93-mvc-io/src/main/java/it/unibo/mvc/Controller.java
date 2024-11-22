@@ -9,30 +9,33 @@ import java.util.List;
 public interface Controller {
 
     /**
+     * /**
      * This methode set then next string to print.
      * 
+     * @param string
      * @throws IllegalArgumentException if string is null
      */
-    public void setString(final String string);
+    void setString(String string);
 
     /**
      * This method return the next string to print.
      * 
      * @return string
      */
-    public String getNextString();
+    String getNextString();
 
     /**
      * This method return the list of string.
      * 
      * @return listOfPrintedString
      */
-    public List<String> getListOfPrintedString();
+    List<String> getListOfPrintedString();
 
     /**
-     * This method print current string
+     * This method print current string.
+     * 
      * @throws IllegalStateException if the current string is unset
+     * @param string
      */
-    public void printCurrentString(final String string);
-
+    void printCurrentString(String string);
 }
